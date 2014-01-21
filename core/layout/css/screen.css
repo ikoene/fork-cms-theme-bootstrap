@@ -1,0 +1,104 @@
+/* Bootstrap */
+@import url("imports/bootstrap.min.css");
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+/* Header navigation */
+
+#headerNavigation h4 {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	text-indent: -9999px;
+}
+
+	/* Subnavigation on hover */
+
+	ul.nav li.dropdown:hover > ul.dropdown-menu {
+    	display: block;    
+	}
+
+/* Header language */
+
+#headerLanguage h4 {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	text-indent: -9999px;
+}
+
+/* Breadcrumb */
+
+#breadcrumb h4 {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	text-indent: -9999px;	
+}
+
+/* Footer navigation */
+
+#footerNavigation h4 {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	text-indent: -9999px;
+}
+
+	#footerLogo p {
+		float: left;
+		position: relative;
+		left: 0;
+	}
+
+		#footerNavigation ul {
+			float: right;
+		}
+
+		#footerNavigation ul li {
+			display: inline;
+		}
+
+			#footerNavigation ul li {
+				margin: 0 0 0 10px;
+			}
+
+		#footerNavigation a {
+			color: #000;
+		}
+
+		#footerNavigation a:hover {
+			color: #428bca;
+			text-decoration: none;
+		}
+
+/* Share */
+
+.share {
+	position: relative;
+}
+
+	.share ul.shareMenu {
+		position: absolute;
+		top: 14px;
+		left: 0;
+		z-index: 99999;
+		background-color: #FFF;
+	}
+
+		.share ul.shareMenu li {
+			float: none !important;
+		}
+
+/* Fonts */
+
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	src: url('../fonts/glyphicons-halflings-regular.eot');
+	src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+} 
