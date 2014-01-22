@@ -15,7 +15,3 @@ It would be great if you could help us improve the theme. GitHub does a great jo
 * Or regarding documentation and how-to's, check out **Wiki**
 
 More info on how to work with GitHub on [help.github.com](https://help.github.com).
-
-## License
-
-The module is licensed under MIT. In short, this license allows you to do everything as long as the copyright statement stays present.
