@@ -30,10 +30,10 @@
 				{/iteration:positionLeft}
 			</div>
 			<div class="col-md-4">
-				{* Middle position *}
-				{iteration:positionMiddle}
-					{$positionMiddle.blockContent}
-				{/iteration:positionMiddle}
+				{* Center position *}
+				{iteration:positionCenter}
+					{$positionCenter.blockContent}
+				{/iteration:positionCenter}
 			</div>
 			<div class="col-md-4">
 				{* Right position *}

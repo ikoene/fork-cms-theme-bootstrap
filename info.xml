@@ -36,7 +36,7 @@
 			<positions>
 				<position name="main" />
 				<position name="left" />
-				<position name="middle" />
+				<position name="center" />
 				<position name="right" />
 				<position name="search">
 					<defaults>
