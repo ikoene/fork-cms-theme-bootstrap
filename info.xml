@@ -64,9 +64,9 @@
 		</template>
 		<template label="3col" path="core/layout/templates/3col.tpl">
 			<positions>
-			<position name="left"/>
-			<position name="right"/>
-			<position name="middle"/>
+				<position name="left"/>
+				<position name="middle"/>
+				<position name="right"/>
 				<position name="search">
 					<defaults>
 						<widget module="search" action="form" />
