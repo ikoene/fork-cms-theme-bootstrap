@@ -36,7 +36,7 @@
 			<positions>
 				<position name="main" />
 				<position name="left" />
-				<position name="center" />
+				<position name="middle" />
 				<position name="right" />
 				<position name="search">
 					<defaults>
@@ -45,7 +45,7 @@
 				</position>
 			</positions>
 			<format>
-				[/,/,search],[main,main,main],[left,center,right]
+				[/,/,search],[main,main,main],[left,middle,right]
 			</format>
 		</template>
 		<template label="2col" path="core/layout/templates/2col.tpl">
