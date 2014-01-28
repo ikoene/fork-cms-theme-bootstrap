@@ -14,6 +14,7 @@
 			{* Navigation *}
 			<nav id="headerNavigation">
 				<h4>{$lblMainNavigation|ucfirst}</h4>
+				<ul class="nav navbar-nav">
 				{$var|getnavigation:'page':0:2}
 			</nav>
 

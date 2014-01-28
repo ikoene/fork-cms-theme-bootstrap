@@ -34,7 +34,4 @@ $(document).ready(function()
 	$(".textarea").addClass("form-control");
 	$(".inputSubmit").addClass("btn btn-primary");
 
-	// add Bootstrap navigation class
-	$("#headerNavigation ul > li > ul").removeClass( "nav navbar-nav" ).addClass( "dropdown-menu" );
-
 });

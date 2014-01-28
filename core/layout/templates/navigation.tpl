@@ -1,5 +1,5 @@
 {option:navigation}
-	<ul class="nav navbar-nav">
+
 		{iteration:navigation}
 
 			{option:!navigation.children}
@@ -11,7 +11,8 @@
 			{option:navigation.children}
 			<li class="dropdown{option:navigation.selected} active{/option:navigation.selected}" id="dropdownNavigation">
 				<a href="{$navigation.link}" class="dropdown-toggle" data-toggle="dropdown">{$navigation.navigation_title} <b class="caret"></b></a>
-				{$navigation.children}
+					<ul class="dropdown-menu">	
+					{$navigation.children}
 			</li>
 			{/option:navigation.children}
 		
