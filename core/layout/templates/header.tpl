@@ -27,9 +27,7 @@
 			{* Search position *}
 			{iteration:positionSearch}
 				{option:!positionSearch.blockIsHTML}
-					<form class="navbar-form navbar-right">
 					{$positionSearch.blockContent}
-					</form>
 				{/option:!positionSearch.blockIsHTML}
 			{/iteration:positionSearch}
 
