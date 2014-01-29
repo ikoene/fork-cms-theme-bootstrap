@@ -77,6 +77,30 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 			text-decoration: none;
 		}
 
+@media (max-width: 767px) {
+	#footerLogo {
+		text-align:center;
+	}
+
+	#footerLogo p {
+		float: none;
+	}
+
+	#footerNavigation {
+		text-align: center;
+	}
+
+	#footerNavigation ul {
+		float: none;
+	}
+
+	#footerNavigation ul>li {
+		position: relative;
+    	left: -20px;
+		margin: 0 5px 0 5px;
+	}	
+}
+
 /* Share */
 
 .share {
