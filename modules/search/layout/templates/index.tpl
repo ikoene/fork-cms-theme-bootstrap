@@ -7,7 +7,7 @@
 	<h4>{$lblSearchAgain|ucfirst}</h4>
 		<div class="form-group">
 			{form:search}
-				<p{option:txtQError} class="errorArea"{/option:txtQError}>
+				<p{option:txtQError} class="alert alert-danger"{/option:txtQError}>
 					<label for="q">{$lblSearchTerm|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
 					{$txtQ} {$txtQError}
 				</p>
