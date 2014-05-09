@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <theme>
 	<name>bootstrap</name>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<requirements>
-		<minimum_version>3.0.0</minimum_version>
+		<minimum_version>3.7.0</minimum_version>
 	</requirements>
 	<thumbnail>thumbnail.png</thumbnail>
 	<description>
@@ -18,8 +18,8 @@
 		</author>
 	</authors>
 	<metanavigation supported="false" />
-	<templates>
-		<template label="Default" path="core/layout/templates/default.tpl">
+	<Templates>
+		<template label="Default" path="Core/Layout/Templates/Default.tpl">
 			<positions>
 				<position name="main" />
 				<position name="search">
@@ -32,7 +32,7 @@
 				[/,/,search],[main,main,main]
 			</format>
 		</template>
-		<template label="Home" path="core/layout/templates/home.tpl">
+		<template label="Home" path="Core/Layout/Templates/Home.tpl">
 			<positions>
 				<position name="main" />
 				<position name="left" />
@@ -48,7 +48,7 @@
 				[/,/,search],[main,main,main],[left,middle,right]
 			</format>
 		</template>
-		<template label="2col" path="core/layout/templates/2col.tpl">
+		<template label="2col" path="Core/Layout/Templates/2col.tpl">
 			<positions>
 				<position name="main"/>
 				<position name="right"/>
@@ -62,7 +62,7 @@
 				[/,/,search],[main,main,right]
 			</format>
 		</template>
-		<template label="3col" path="core/layout/templates/3col.tpl">
+		<template label="3col" path="Core/Layout/Templates/3col.tpl">
 			<positions>
 				<position name="left"/>
 				<position name="middle"/>
@@ -77,5 +77,5 @@
 				[/,/,search],[left,middle,right]
 			</format>
 		</template>		
-	</templates>
+	</Templates>
 </theme>
