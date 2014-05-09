@@ -1,8 +1,8 @@
-{include:core/layout/templates/head.tpl}
+{include:Core/Layout/Templates/Head.tpl}
 
 <body class="{$LANGUAGE}" itemscope itemtype="http://schema.org/WebPage">
 
-	{include:core/layout/templates/header.tpl}
+	{include:Core/Layout/Templates/Header.tpl}
 
     <div class="container">
 		<div class="row">
@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-	{include:core/layout/templates/footer.tpl}
+	{include:Core/Layout/Templates/Footer.tpl}
 
 	<noscript>
 		<div class="message notice">
@@ -30,8 +30,8 @@
 	{/iteration:jsFiles}
 
 	{* Theme specific Javascript *}
-	<script src="{$THEME_URL}/core/js/boots.js"></script>
-	<script src="{$THEME_URL}/core/js/bootstrap.min.js"></script>
+	<script src="{$THEME_URL}/Core/Js/boots.js"></script>
+	<script src="{$THEME_URL}/Core/Js/bootstrap.min.js"></script>
 
 	{* Site wide HTML *}
 	{$siteHTMLFooter}

@@ -21,7 +21,7 @@
 			{* Language *}
 			<nav id="headerLanguage">
 				<h4>{$lblLanguage|ucfirst}</h4>
-				{include:core/layout/templates/languages.tpl}
+				{include:Core/Layout/Templates/Languages.tpl}
 			</nav>
 
 			{* Search position *}
@@ -39,6 +39,6 @@
 <div id="breadcrumb">
 	<div class="container">
 		<h4>{$lblBreadcrumb|ucfirst}</h4>
-		{include:core/layout/templates/breadcrumb.tpl}
+		{include:Core/Layout/Templates/Breadcrumb.tpl}
 	</div>
 </div>
