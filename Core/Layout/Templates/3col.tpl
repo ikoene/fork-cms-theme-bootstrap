@@ -1,4 +1,4 @@
-{include:core/layout/templates/Head.tpl}
+{include:Core/Layout/Templates/Head.tpl}
 
 <body class="{$LANGUAGE}" itemscope itemtype="http://schema.org/WebPage">
 
