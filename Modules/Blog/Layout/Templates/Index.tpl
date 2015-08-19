@@ -14,7 +14,7 @@
 		{iteration:items}
 			<article>
 					<header>
-						<h1><a href="{$items.full_url}" title="{$items.title}">{$items.title}</a></h1>
+						<h2><a href="{$items.full_url}" title="{$items.title}">{$items.title}</a></h2>
 						<p class="lead">
 							{* Written by *}
 							{$msgWrittenBy|ucfirst|sprintf:{$items.user_id|usersetting:'nickname'}}
