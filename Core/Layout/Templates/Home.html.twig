@@ -1,0 +1,63 @@
+{% include "Core/Layout/Templates/Head.html.twig" %}
+
+<body class="{{ LANGUAGE }}" itemscope itemtype="http://schema.org/WebPage">
+
+	{% include "Core/Layout/Templates/Header.html.twig" %}
+
+	{# Main positions #}
+	{% for main in positions.main %}
+		{% if main.html %}
+			<div class="container">
+				<div class="jumbotron">
+					{{ main.html|raw }}
+					<p><a class="btn btn-lg btn-primary" href="#" role="button">{{ 'lbl.More'|trans|ucfirst }} &raquo;</a></p>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				{# Left positions #}
+				{% for left in positions.left %}
+					{{ left.html|raw }}
+				{% endfor %}
+			</div>
+			<div class="col-md-4">
+				{# Middle positions #}
+				{% for middle in positions.middle %}
+					{{ middle.html|raw }}
+				{% endfor %}
+			</div>
+			<div class="col-md-4">
+				{# Right positions #}
+				{% for right in positions.right %}
+					{{ right.html|raw }}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	{% include "Core/Layout/Templates/Footer.html.twig" %}
+
+	<noscript>
+		<div class="message notice">
+			<h4>{{ 'lbl.EnableJavascript'|trans|ucfirst }}</h4>
+			<p>{{ 'msg.EnableJavascript'|trans }}</p>
+		</div>
+	</noscript>
+
+	{# General Javascript #}
+	{% for js in jsFiles %}
+		<script src="{{ js.file }}"></script>
+	{% endfor %}
+
+	{# Theme specific Javascript #}
+	<script src="{{ THEME_URL }}/Core/Js/boots.js"></script>
+	<script src="{{ THEME_URL }}/Core/Js/bootstrap.min.js"></script>
+
+	{# Site wide HTML #}
+	{{ siteHTMLFooter|raw }}
+</body>
+</html>

@@ -1,0 +1,69 @@
+{#
+  variables that are available:
+  - {{ items }}: contains an array with all posts, each element contains data about the post
+#}
+
+{% if not items %}
+	<div id="blogIndex">
+		<p>{{ 'msg.BlogNoItems'|trans }}</p>
+	</div>
+{% endif %}
+
+{% if items %}
+	<div id="blogIndex">
+		{% for item in items %}
+			<article>
+				<header>
+					<h3><a href="{{ item.full_url }}" title="{{ item.title }}">{{ item.title }}</a></h3>
+					<p class="lead">
+						{# Written by #}
+						{{ 'msg.WrittenBy'|trans|ucfirst|format(item.user_id|usersetting('nickname'))|raw }}
+
+						{# Category#}
+						{{ 'lbl.In'|trans }} {{ 'lbl.The'|trans }} {{ 'lbl.Category'|trans }}
+						<a href="{{ item.category_full_url }}" title="{{ item.category_title }}">{{ item.category_title }}</a>{% if not item.tags %}.{% endif %}
+					</p>
+					<hr>
+					<p class="pull-left"><span class="glyphicon glyphicon-time"></span>
+						{# Written on #}
+						{{ 'lbl.On'|trans }} {{ item.publish_on|spoondate(dateFormatLong, LANGUAGE) }}
+					</p>
+					{# Comments #}
+					{% if item.allow_comments %}
+						<div class="text-right">
+							{% if not item.comments %}
+								<a href="{{ item.full_url }}#{{ 'act.Comment'|trans }}">{{ 'msg.BlogNoComments'|trans|ucfirst }}</a>
+							{% endif %}
+							{% if item.comments %}
+								{% if item.comments_multiple %}
+									<a href="{{ item.full_url }}#{{ 'act.Comments'|trans }}">{{ 'msg.BlogNumberOfComments'|trans|format(item.comments_count)|raw }}</a>
+								{% endif %}
+								{% if not item.comments_multiple %}
+									<a href="{{ item.full_url }}#{{ 'act.Comments'|trans }}">{{ 'msg.BlogOneComment'|trans }}</a>
+								{% endif %}
+							{% endif %}
+						</div>
+					{% endif %}
+					<hr>
+						{# Tags #}
+						{% if item.tags %}
+						<p>
+							{{ 'lbl.With'|trans }} {{ 'lbl.The'|trans }} {{ 'lbl.Tags'|trans }}
+							{% for tags in item.tags %}
+								<a href="{{ tags.full_url }}" rel="tag" title="{{ tags.name }}">{{ tags.name }}</a>{% if not tags.last %}, {% endif %}{% if tags.last %}.{% endif %}
+							{% endfor %}
+						</p>
+						<hr>
+						{% endif %}
+				</header>
+
+				{% if item.image %}
+					<img src="{{ FRONTEND_FILES_URL }}/blog/images/source/{{ item.image }}" alt="{{ item.title }}" />{% endif %}
+				{% if not item.introduction %}{{ item.text|raw }}{% endif %}
+				{% if item.introduction %}{{ item.introduction|raw }}{% endif %}
+				<hr>
+			</article>
+		{% endfor %}
+	</div>
+	{% include "Core/Layout/Templates/Pagination.html.twig" %}
+{% endif %}

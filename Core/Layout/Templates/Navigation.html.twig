@@ -1,0 +1,42 @@
+{#{option:navigation}#}
+
+		{#{iteration:navigation}#}
+
+			{#{option:!navigation.children}#}
+			{#<li{option:navigation.selected} class="active"{/option:navigation.selected}>#}
+				{#<a href="{$navigation.link}" title="{$navigation.navigation_title}"{option:navigation.nofollow} rel="nofollow"{/option:navigation.nofollow}>{$navigation.navigation_title}</a>#}
+			{#</li>#}
+			{#{/option:!navigation.children}#}
+
+			{#{option:navigation.children}#}
+			{#<li class="dropdown{option:navigation.selected} active{/option:navigation.selected}" id="dropdownNavigation">#}
+				{#<a href="{$navigation.link}" class="dropdown-toggle" data-toggle="dropdown">{$navigation.navigation_title} <b class="caret"></b></a>#}
+					{#<ul class="dropdown-menu">#}
+					{#{$navigation.children}#}
+			{#</li>#}
+			{#{/option:navigation.children}#}
+
+		{#{/iteration:navigation}#}
+	{#</ul>#}
+{#{/option:navigation}#}
+{% if navigation %}
+	{% for nav in navigation %}
+		{% if not nav.children %}
+		<li{% if nav.selected %} class="active"{% endif %}>
+			<a href="{{ nav.link }}" title="{{ nav.navigation_title }}"{% if nav.nofollow %} rel="nofollow"{% endif %}>{{ nav.navigation_title|raw }}</a>
+			{% if nav.selected %}{{ nav.children|raw }}{% endif %}
+		</li>
+		{% endif %}
+
+		{# Create dropdown menu item if parent has children #}
+		{% if nav.children %}
+			<li{% if nav.selected %} class="active"{% endif %} id="dropdownNavigation">
+				<a href="{{ nav.link }}" class="dropdown-toggle" data-toggle="dropdown" title="{{ nav.navigation_title }}"{% if nav.nofollow %} rel="nofollow"{% endif %}>{{ nav.navigation_title|raw }} <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				{{ nav.children|raw }}
+			</li>
+		{% endif %}
+
+	{% endfor %}
+</ul>
+{% endif %}

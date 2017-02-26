@@ -1,0 +1,25 @@
+{#
+	variables that are available:
+	- {$searchResults}: contains an array with all items, each element contains data about the item
+	- {$searchTerm}: the term that has been searched for
+#}
+<section id="searchIndex">
+	<h4>{{ 'lbl.SearchAgain'|trans|ucfirst }}</h4>
+	{% form search %}
+		<div class="form-group">
+			<p{% if form_field_error %} class="alert alert-danger"{% endif %}>
+				{% form_field q %} {% form_field_error q %}
+			</p>
+		</div>
+		<div class="form-group">
+			<p>
+				<input id="submit" class="inputSubmit btn btn-success" type="submit" name="submit" value="{{ 'lbl.Search'|trans|ucfirst }}" />
+			</p>
+		</div>
+	{% endform %}
+</section>
+
+{# don't remove this container nor replace the id - it'll be used to populate the search results live as you type #}
+<div id="searchContainer">
+	{% include "Modules/Search/Layout/Templates/Results.html.twig" %}
+</div>

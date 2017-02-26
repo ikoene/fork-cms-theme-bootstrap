@@ -1,0 +1,25 @@
+{# Success #}
+{% if resendActivationSuccess %}
+	<div class="alert alert-success"><p>{{ 'msg.ResendActivationIsSuccess'|trans }}</p></div>
+{% endif %}
+
+{# Error #}
+{% if resendActivationHasError %}
+	<div class="alert alert-danger"><p>{{ 'err.FormError'|trans }}</p></div>
+{% endif %}
+
+{% if not resendActivationHideForm %}
+	<section id="resendActivationForm">
+		{% form resendActivation %}
+			<fieldset>
+				<p{% if txtEmailError %} class="alert alert-danger"{% endif %}>
+					<label for="email">{{ 'lbl.Email'|trans|ucfirst }} <abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
+					{% form_field email %} {% form_field_error email %}
+				</p>
+				<p>
+					<input class="btn btn-primary" type="submit" value="{{ 'lbl.Save'|trans|ucfirst }}" />
+				</p>
+			</fieldset>
+		{% endform %}
+	</section>
+{% endif %}
