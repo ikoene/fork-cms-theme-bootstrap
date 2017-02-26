@@ -4,7 +4,6 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 
 body {
-  padding-top: 50px;
   padding-bottom: 20px;
 }
 
@@ -38,7 +37,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 	position: absolute;
 	top: -9999px;
 	left: -9999px;
-	text-indent: -9999px;	
+	text-indent: -9999px;
 }
 
 /* Search widget */
@@ -163,7 +162,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 		position: relative;
     	left: -20px;
 		margin: 0 5px 0 5px;
-	}	
+	}
 }
 
 /* Share */
@@ -190,4 +189,4 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 	font-family: 'Glyphicons Halflings';
 	src: url('../fonts/glyphicons-halflings-regular.eot');
 	src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
-} 
+}
