@@ -9,11 +9,11 @@
 {% endif %}
 
 {% if not registerHideForm %}
-	{form:register}
+	{% form register %}
 		<section id="registerForm">
 			<fieldset>
-				<p{% if txtDisplayNameError %} class="alert alert-danger"{% endif %}>>
-					<label for="displayName">{$lblDisplayName|ucfirst}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
+				<p{% if txtDisplayNameError %} class="alert alert-danger"{% endif %}>
+					<label for="displayName">{{ 'lbl.DisplayName'|trans|ucfirst }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
 					{% form_field display_name %} {% form_field_error display_name %}
 				</p>
 				<p{% if txtEmailError %} class="alert alert-danger"{% endif %}>
@@ -32,5 +32,5 @@
 				</p>
 			</fieldset>
 		</section>
-	{/form:register}
+	{% endform %}
 {% endif %}
