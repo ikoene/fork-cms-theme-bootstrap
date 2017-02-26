@@ -1,21 +1,21 @@
-{*
-	variables that are available:
-	- {$widgetBlogCategories}:
-*}
+{#
+  variables that are available:
+  - {{ widgetBlogCategories }}:
+#}
 
-{option:widgetBlogCategories}
+{% if widgetBlogCategories %}
 	<section id="blogCategoriesWidget" class="well">
 		<header>
-			<h3>{$lblCategories|ucfirst}</h3>
+			<h3>{{ 'lbl.Categories'|trans|ucfirst }}</h3>
 		</header>
 		<ul>
-			{iteration:widgetBlogCategories}
+			{% for widgetBlogCategories in widgetBlogCategories %}
 				<li>
-					<a href="{$widgetBlogCategories.url}">
-						{$widgetBlogCategories.label}&nbsp;({$widgetBlogCategories.total})
+					<a href="{{ widgetBlogCategories.url }}">
+						{{ widgetBlogCategories.label }}&nbsp;({{ widgetBlogCategories.total }})
 					</a>
 				</li>
-			{/iteration:widgetBlogCategories}
+			{% endfor %}
 		</ul>
 	</section>
-{/option:widgetBlogCategories}
+{% endif %}

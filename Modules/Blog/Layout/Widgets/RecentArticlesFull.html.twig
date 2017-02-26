@@ -1,47 +1,49 @@
-{*
-	variables that are available:
-	- {$widgetBlogRecentArticlesFull}: contains an array with all posts, each element contains data about the post
-*}
+{#
+  variables that are available:
+  - {{ widgetBlogRecentArticlesFull }}: contains an array with all posts, each element contains data about the post
+#}
 
-{option:widgetBlogRecentArticlesFull}
-	<section id="blogRecentArticlesFullWidget">
-			<header>
-				<h3>{$lblRecentArticles|ucfirst}</h3>
-			</header>
+{% if widgetBlogRecentArticlesFull %}
+	<section id="blogRecentArticlesFullWidget" class="well">
+		<header>
+			<h3>{{ 'lbl.RecentArticles'|trans|ucfirst }}</h3>
+		</header>
 
-				{iteration:widgetBlogRecentArticlesFull}
-					<article>
-						<header>
-							<h4><a href="{$widgetBlogRecentArticlesFull.full_url}" title="{$widgetBlogRecentArticlesFull.title}">{$widgetBlogRecentArticlesFull.title}</a></h4>
-							<p>
-								{$msgWrittenBy|ucfirst|sprintf:{$widgetBlogRecentArticlesFull.user_id|usersetting:'nickname'}}								
-								<a href="{$widgetBlogRecentArticlesFull.category_full_url}" title="{$widgetBlogRecentArticlesFull.category_title}">{$widgetBlogRecentArticlesFull.category_title}</a>
-							</p>
-							<hr>
-							<p class="pull-left"><span class="glyphicon glyphicon-time"></span>
-								{$widgetBlogRecentArticlesFull.publish_on|date:{$dateFormatLong}:{$LANGUAGE}}
-							</p>
-								{option:widgetBlogRecentArticlesFull.allow_comments}
-								<div class="text-right">
-										{option:!widgetBlogRecentArticlesFull.comments}<a href="{$widgetBlogRecentArticlesFull.full_url}#{$actComment}">{$msgBlogNoComments|ucfirst}</a>{/option:!widgetBlogRecentArticlesFull.comments}
-										{option:widgetBlogRecentArticlesFull.comments}
-											{option:widgetBlogRecentArticlesFull.comments_multiple}<a href="{$widgetBlogRecentArticlesFull.full_url}#{$actComments}">{$msgBlogNumberOfComments|sprintf:{$widgetBlogRecentArticlesFull.comments_count}}</a>{/option:widgetBlogRecentArticlesFull.comments_multiple}
-											{option:!widgetBlogRecentArticlesFull.comments_multiple}<a href="{$widgetBlogRecentArticlesFull.full_url}#{$actComments}">{$msgBlogOneComment}</a>{/option:!widgetBlogRecentArticlesFull.comments_multiple}
-										{/option:widgetBlogRecentArticlesFull.comments}
-								</div>
-								{/option:widgetBlogRecentArticlesFull.allow_comments}
-							<hr>
+		{% for article in widgetBlogRecentArticlesFull %}
+			<article>
+				<header>
+					<h4><a href="{{ article.full_url }}" title="{{ article.title }}">{{ article.title }}</a></h4>
+					<p>
+						{{ 'msg.WrittenBy'|trans|ucfirst|format(article.user_id|usersetting('nickname')|raw) }} {{ 'lbl.On'|trans }} {{ article.publish_on|spoondate(dateFormatLong, LANGUAGE) }}
+						<a href="{{ article.category_full_url }}" title="{{ article.category_title }}">{{ article.category_title }}</a>
+					</p>
+					<hr>
+					<p class="pull-left"><span class="glyphicon glyphicon-time"></span>
+						{{ article.publish_on|spoondate(dateFormatLong, LANGUAGE) }}
+					</p>
+					{% if article.allow_comments %}
+					<div class="text-right">
+						{% if not article.comments %}
+							<a href="{{ article.full_url }}#{{ 'act.Comment'|trans }}">{{ 'msg.BlogNoComments'|trans|ucfirst }}</a>{% endif %}
+						{% if article.comments %}
+							{% if article.comments_multiple %}
+								<a href="{{ article.full_url }}#{{ 'act.Comments'|trans }}">{{ 'msg.BlogNumberOfComments'|trans|format(article.comments_count)|raw }}</a>{% endif %}
+							{% if not article.comments_multiple %}
+								<a href="{{ article.full_url }}#{{ 'act.Comments'|trans }}">{{ 'msg.BlogOneComment'|trans }}</a>{% endif %}
+						{% endif %}
+					</div>
+					{% endif %}
+					<hr>
+				</header>
+				{% if not article.introduction %}{{ article.text|raw }}{% endif %}
+				{% if article.introduction %}{{ article.introduction|raw }}{% endif %}
+				<hr>
+			</article>
+		{% endfor %}
 
-						</header>
-						{option:!widgetBlogRecentArticlesFull.introduction}{$widgetBlogRecentArticlesFull.text}{/option:!widgetBlogRecentArticlesFull.introduction}
-						{option:widgetBlogRecentArticlesFull.introduction}{$widgetBlogRecentArticlesFull.introduction}{/option:widgetBlogRecentArticlesFull.introduction}
-						<hr>
-					</article>
-				{/iteration:widgetBlogRecentArticlesFull}
-
-				<p>
-					<a href="{$var|geturlforblock:'blog'}">{$lblBlogArchive|ucfirst}</a>
-					<a id="RSSfeed" href="{$widgetBlogRecentArticlesFullRssLink}">{$lblSubscribeToTheRSSFeed|ucfirst}</a>
-				</p>
+		<p>
+			<a href="{{ geturlforblock('Blog') }}">{{ 'lbl.BlogArchive'|trans|ucfirst }}</a>
+			<a id="RSSfeed" href="{{ widgetBlogRecentArticlesFullRssLink }}">{{ 'lbl.SubscribeToTheRSSFeed'|trans|ucfirst }}</a>
+		</p>
 	</section>
-{/option:widgetBlogRecentArticlesFull}
+{% endif %}

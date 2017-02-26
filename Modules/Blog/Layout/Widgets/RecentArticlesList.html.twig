@@ -1,23 +1,23 @@
-{*
-	variables that are available:
-	- {$widgetBlogRecentArticlesList}: contains an array with all posts, each element contains data about the post
-*}
+{#
+  variables that are available:
+  - {{ widgetBlogRecentArticlesList }}: contains an array with all posts, each element contains data about the post
+#}
 
-{option:widgetBlogRecentArticlesList}
+{% if widgetBlogRecentArticlesList %}
 	<section id="blogRecentArticlesListWidget" class="well">
 			<header>
-				<h3>{$lblRecentArticles|ucfirst}</h3>
+				<h3>{{ 'lbl.RecentArticles'|trans|ucfirst }}</h3>
 			</header>
 				<ul>
-					{iteration:widgetBlogRecentArticlesList}
-						<li><a href="{$widgetBlogRecentArticlesList.full_url}" title="{$widgetBlogRecentArticlesList.title}">{$widgetBlogRecentArticlesList.title}</a></li>
-					{/iteration:widgetBlogRecentArticlesList}
+					{% for ArticlesList in widgetBlogRecentArticlesList %}
+						<li><a href="{{ ArticlesList.full_url }}" title="{{ ArticlesList.title }}">{{ ArticlesList.title }}</a></li>
+					{% endfor %}
 				</ul>
 			<footer class="ft">
 				<p>
-					<a href="{$var|geturlforblock:'blog'}">{$lblBlogArchive|ucfirst}</a>
-					<a id="RSSfeed" href="{$widgetBlogRecentArticlesFullRssLink}">{$lblSubscribeToTheRSSFeed|ucfirst}</a>
+					<a href="{{ geturlforblock('Blog') }}">{{ 'lbl.BlogArchive'|trans|ucfirst }}</a>
+					<a id="RSSfeed" href="{{ widgetBlogRecentArticlesFullRssLink }}">{{ 'lbl.SubscribeToTheRSSFeed'|trans|ucfirst }}</a>
 				</p>
 			</footer>
 	</section>
-{/option:widgetBlogRecentArticlesList}
+{% endif %}
